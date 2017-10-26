@@ -1,0 +1,17 @@
+SpringIOC实例化都是通过JAVA的反射机制实现
+
+private static ApplicationContext applicationContext;这个类是Spring IOC容器的使用
+    ApplicationContext是由BeanFactory派生而来，是其子类，多了一些方法，例如：
+	1.ApplicationContext有多了监控和事件机制，ContextRefreshedEvent：bean全部类加载完，
+	有相关相应事件，同时更容易看出bean文件配置错误，bean生命周期的启动停止销毁
+	2.利用MessageSource进行国际化  
+	3.底层资源的访问 ，扩展了ResourceLoader(资源加载器)接口，从而可以用来加载多个Resource
+	4.对Web应用的支持  
+  
+  
+  new 是java中的关键字，是创建一个新对象的关键字，是动态实例
+  而newInstance（）是通过反射机制实例一个对象,javaweb的spring中常用的静态实例化方法，newInstance() 是java反射框架中类对象(Class)创建新对象的方法,
+  方法签名：Object java.lang.Class.newInstance();如:  
+  Class clazz = String.class;     Object newInstance = clazz.newInstance();newInstance()  
+  也经常见于工厂设计模式中，在该模式中，共产类的该方法返回一个工厂bean。
+ 

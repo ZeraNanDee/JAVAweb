@@ -10,8 +10,10 @@ private static ApplicationContext applicationContext;这个类是Spring IOC容�
   
   
   new 是java中的关键字，是创建一个新对象的关键字，是动态实例
-  而newInstance（）是通过反射机制实例一个对象,javaweb的spring中常用的静态实例化方法，newInstance() 是java反射框架中类对象(Class)创建新对象的方法,
+  而newInstance（）是通过反射机制实例一个对象，用于面向接口编程,javaweb的spring中常用的静态实例化方法，newInstance() 是java反射框架中类对象(Class)创建新对象的方法,
   方法签名：Object java.lang.Class.newInstance();如:  
   Class clazz = String.class;     Object newInstance = clazz.newInstance();newInstance()  
   也经常见于工厂设计模式中，在该模式中，共产类的该方法返回一个工厂bean。
- 
+  
+  bean的id和name的区别就是id必须唯一不能有相同id，否则报错，而name可以同名，但配置文件中允许出现两个name相同的<bean>，
+  在用getBean()返回实例时，后面一个Bean被返回,应该是前面那个<bean>被后面同名的 <bean>覆盖了。

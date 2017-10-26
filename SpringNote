@@ -27,7 +27,7 @@ private static ApplicationContext applicationContext;这个类是Spring IOC容�
   <bean id="itemf" class="cn.itcareers.m03.ItemFactory" /> 是个普通的Bean；
 <bean id="item" factory-bean="itemf" factory-method="getItem" />是工厂Bean。
 普通的Bean返回的是一个实例。工厂Bean返回的不是一个实例，而是由工厂getItem方法返回的对象，作为工厂方法返回的实例，它将使用容器创建的bean。
-当注入的是一个接口，而没有实现类时，就需要用工厂Bean，它解决了IOC容器无法直接实例化某个对象的问题。
+Bean工厂有静态的，Bean工厂的管理机制就是用bean管理bean，最开始实例化bean工厂，之后每次调用只需要更改bean工厂中的bean的值，而不需要再实例化。
 
 JVM：1.加载.class文件 2.管理并分配内存 3.执行垃圾收集 JRE包含JVM的运行环境，是JAVA程序运行的容器，同时也是操作系统的
 一个进程，JVM在整个JDK中处于最底层，负责于操作的交互，用来屏蔽操作系统环境，提供独特的运行环境，JVM通过JDK的java.exe完成，

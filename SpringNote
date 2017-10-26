@@ -1,15 +1,20 @@
 SpringIOC实例化都是通过JAVA的反射机制实现
 
+JAVA的反射机制就是允许我们动态调用某个对象的方法/构造函数，获取某个对象的属性等，
+而无需再编码时确定调用的对象，也就是不需要自己在编码时new出来，而是类编译加载时JVM自动创建实例。
+Class c=Class.forName（“类的路径”）
+Object action=c.newInstance（）;//加载类，调用无参默认的构造函数
+c.getMethod（）/C.getField（）....可以获取对象c的方法/构造函数，获取某个对象的属性等（包括私有）
+
 private static ApplicationContext applicationContext;这个类是Spring IOC容器的使用
-    ApplicationContext是由BeanFactory派生而来，是其子类，多了一些方法，例如：
+    ApplicationContext（上下文管理）是由BeanFactory（工厂类管理）派生而来，是其子类，多了一些方法，例如：
 	1.ApplicationContext有多了监控和事件机制，ContextRefreshedEvent：bean全部类加载完，
 	有相关相应事件，同时更容易看出bean文件配置错误，bean生命周期的启动停止销毁
 	2.利用MessageSource进行国际化  
 	3.底层资源的访问 ，扩展了ResourceLoader(资源加载器)接口，从而可以用来加载多个Resource
 	4.对Web应用的支持  
   
-  
-  new 是java中的关键字，是创建一个新对象的关键字，是动态实例
+  new 是java中的关键字，是创建一个新对象的关键字，面向对象编程，是静态实例
   而newInstance（）是通过反射机制实例一个对象，用于面向接口编程,javaweb的spring中常用的静态实例化方法，newInstance() 是java反射框架中类对象(Class)创建新对象的方法,
   方法签名：Object java.lang.Class.newInstance();如:  
   Class clazz = String.class;     Object newInstance = clazz.newInstance();newInstance()  
@@ -20,4 +25,10 @@ private static ApplicationContext applicationContext;这个类是Spring IOC容�
   
   <bean id="itemf" class="cn.itcareers.m03.ItemFactory" /> 是个普通的Bean；
 <bean id="item" factory-bean="itemf" factory-method="getItem" />是工厂Bean。
-工厂Bean返回的不是一个实例，而是由工厂getItem方法返回的对象，作为工厂方法返回的实例，它将使用容器创建的bean。
+普通的Bean返回的是一个实例。工厂Bean返回的不是一个实例，而是由工厂getItem方法返回的对象，作为工厂方法返回的实例，它将使用容器创建的bean。
+当注入的是一个接口，而没有实现类时，就需要用工厂Bean，它解决了IOC容器无法直接实例化某个对象的问题。
+
+JVM：1.加载.class文件 2.管理并分配内存 3.执行垃圾收集 JRE包含JVM的运行环境，是JAVA程序运行的容器，同时也是操作系统的
+一个进程，JVM在整个JDK中处于最底层，负责于操作的交互，用来屏蔽操作系统环境，提供独特的运行环境，JVM通过JDK的java.exe完成，
+JVM就是JAVA可以运用于多平台的一个重要原因。
+

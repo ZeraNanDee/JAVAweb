@@ -17,3 +17,7 @@ private static ApplicationContext applicationContext;这个类是Spring IOC容�
   
   bean的id和name的区别就是id必须唯一不能有相同id，否则报错，而name可以同名，但配置文件中允许出现两个name相同的<bean>，
   在用getBean()返回实例时，后面一个Bean被返回,应该是前面那个<bean>被后面同名的 <bean>覆盖了。
+  
+  <bean id="itemf" class="cn.itcareers.m03.ItemFactory" /> 是个普通的Bean；
+<bean id="item" factory-bean="itemf" factory-method="getItem" />是工厂Bean。
+工厂Bean返回的不是一个实例，而是由工厂getItem方法返回的对象，作为工厂方法返回的实例，它将使用容器创建的bean。

@@ -34,3 +34,74 @@ JVM：1.加载.class文件 2.管理并分配内存 3.执行垃圾收集 JRE包�
 JVM就是JAVA可以运用于多平台的一个重要原因。
 
 Spring配置文件的整合，如果导入多个XML文件，可以再另外做一个XML作为这些XML的整合，在主方法中只需要调用整合的XML即可
+
+
+Spring使用外部属性文件:
+--添加命名空间：<beans>中添加context Schema定义（xmlns:context="http://www.springframework.org/schema/context"）
+--在配置文件下加入配置：<context:property-placeholder location="classpath:db.properties"/>
+<!-- 导入属性文件 -->  
+<context:property-placeholder location="classpath:db_properties"/>  
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">  
+    <property name="user" value="${user}"></property>  
+    <property name="password" value="${password}"></property>  
+    <property name="driverClass" value="${driverclass}"></property>  
+    <property name="jdbcUrl" value="${jdbcurl}"></property>  
+</bean>   
+
+Spring表达式语言（简单SpEL）：是一个支持运行时查询和操作对象图的强大的表达式语言，
+语法类似于EL：SpEL使用#｛...｝作为定界符，所有在大框号中的字符都将被认为是SpEL。
+SpEL为bean的属性进行动态赋值提供了便利。
+
+SpEL表达式：字面量
+字面量的表示：
+---  整数：<property name="count" value="#{5}"/>
+---  小数：<property name="frequency" value="#{89.7}"/>
+---  科学计数法：<property name="capacity" value="#{1e4}"/>
+---  String可以使用单引号或者双引号作为字符串的定界符号：
+           <property name="name" value="#{"Chuck"}"/>或<property name="name" value="#{'Chuck'}"/>
+---  Boolean：<property name="enabled" value="#{false}"/>
+
+[html] view plain copy print?
+<!-- 使用spel为属性赋一个字面值 -->  
+<bean id="address" class="com.wul.spring.beans.spel.Address">  
+    <property name="city" value="#{'Beijing'}"></property>  
+    <property name="street" value="WuDaoKou"></property>  
+</bean>  
+
+通过SpEL可以实现：
+1.引用其他对象
+[html] view plain copy print?
+<!-- 使用spel来应用其他的bean -->  
+<property name="car" value="#{car}"></property>  
+
+2.引用其他对象的属性
+[html] view plain copy print?
+<!--使用spel来应用其他的bean的属性 -->  
+<property name="city" value="#{address.city}"></property>  
+
+3.调用其他方法，还可以链式操作
+
+4.算数运算符：+ -  *  /  % ^
+
+5.加号还可以用作字符串连接
+
+6.比较运算符：< > == <=  >= lt gt eq le ge 
+
+7.逻辑运算符：and，or，not，|
+
+8.if-else运算符：？: (temary) , ?:(Elvis)
+[html] view plain copy print?
+<!-- 在spel中使用运算符 -->  
+lt;property name="info" value="#{car.price>=300000?'金领':'白领'}"></property>  
+9.if-else的变体
+
+10.正则表达式：matches
+
+11.调用静态方法或静态属性：通过T()调用一个类的静态方法，它将返回一个Class Object，然后再调用相应的方法或属性。
+[html] view plain copy print?
+<!--使用spel引用类的静态属性  -->  
+<property name="tyrePerimeter" value="#{T(java.lang.Math).PI*80}"></property>  
+
+
+
+

@@ -105,3 +105,11 @@ lt;property name="info" value="#{car.price>=300000?'金领':'白领'}"></propert
 使用构造器注入属性值可以指定参数的位置和类型。例如两个构造器参数不同，参数重载了，那么在配置文件中调用时可以用type=“（类型）”区分
 
 bean的内部bean不能被外部引用
+
+  p命名相比较property更简便，p：属性=“值” 
+  p：属性-ref=“引用不同类的别的bean的值”，一般用于某类要实例化某类时，并且需要bean需要ref另外的这个bean时，用p标签是这样 p：属性-ref=“。。”
+  List 对象 ---- <list> 元素
+  Set 对象 ---- <set> 元素
+  Map对象 ----<map>元素
+  Properties 对象 ---- <props> 元素
+  

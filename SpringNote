@@ -102,6 +102,6 @@ lt;property name="info" value="#{car.price>=300000?'金领':'白领'}"></propert
 <!--使用spel引用类的静态属性  -->  
 <property name="tyrePerimeter" value="#{T(java.lang.Math).PI*80}"></property>  
 
-
+使用构造器注入属性值可以指定参数的位置和类型。例如两个构造器参数不同，参数重载了，那么在配置文件中调用时可以用type=“（类型）”区分
 
 

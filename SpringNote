@@ -112,4 +112,7 @@ bean的内部bean不能被外部引用
   Set 对象 ---- <set> 元素
   Map对象 ----<map>元素
   Properties 对象 ---- <props> 元素
-  
+ 
+ bean的生命周期：通过构造器或工厂方法创建bean实例，为bean属性设置值和对其他bean的引用，将bean实例传递给bean后置处理器的
+ postProcessBeforeInitialization方法，调用bean的初始化方法，将bean实例传递给bean后置处理器的postProcessAfterInitialization方法，
+ bean执行，关闭容器时，调用destroy方法销毁bean实例

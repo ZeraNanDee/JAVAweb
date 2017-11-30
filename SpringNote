@@ -140,6 +140,8 @@ Spring AOP 切面：跨越应用程序的多个模块的功能，将纯净代码
 	   @Aspect是AOP切面特定的注解，用来实现AOP切面
 	   
 	   
+	   isAssignableFrom 是用来判断一个类Class1和另一个类Class2是否相同或是另一个类的超类或接口
+	   而  instanceof  是用来判断一个对象实例是否是一个类或接口的或其子类子接口的实例。   
 所有的类都是Class类的实例，Object是类，那么Object也是Class类的一个实例。
 所有的类都最终继承自Object类，Class是类，那么Class也继承自Object。
          System.out.println(Class.class instanceof Object);
@@ -147,5 +149,6 @@ Spring AOP 切面：跨越应用程序的多个模块的功能，将纯净代码
 两者结果都是true。
 打个比方，番茄炒蛋。并不是要先把番茄完全炒好，然后把鸡蛋完全炒好，然后把它们混起来；
 而是先炒番茄炒到半熟，再炒鸡蛋炒到半熟，然后把两个半熟的部分混在一起同时炒熟。
+JVM初始化时第一个装载的应该是rt.jar里的Object.class，但它初始化完成时包括Class.class、ClassLoader.class等其他相关类也已经被装载了。
 两者存在相对依赖关系，而不是绝对的先后顺序，JVM的bootstrap过程，先分配空间，再把相互引用关系串起来。
 

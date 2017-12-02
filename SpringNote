@@ -153,3 +153,4 @@ JVM初始化时第一个装载的应该是rt.jar里的Object.class，但它初�
 两者存在相对依赖关系，而不是绝对的先后顺序，JVM的bootstrap过程，先分配空间，再把相互引用关系串起来。
 
 jdbctemplate的方法update（）用来更新sql语句（增删改），queryforObject（）方法用来查sql,jdbctemplate不支持级联操作。
+事务就是提交时如果其中一项不符合要求，全部撤回，提交过程中全部符合要求才会提交成功

@@ -153,4 +153,10 @@ JVM初始化时第一个装载的应该是rt.jar里的Object.class，但它初�
 两者存在相对依赖关系，而不是绝对的先后顺序，JVM的bootstrap过程，先分配空间，再把相互引用关系串起来。
 
 jdbctemplate的方法update（）用来更新sql语句（增删改），queryforObject（）方法用来查sql,jdbctemplate不支持级联操作。
-事务就是提交时如果其中一项不符合要求，全部撤回，提交过程中全部符合要求才会提交成功
+
+Spring事务的注解时，关键字是@Transactional,默认值@Transactional（Propagation=Propagation.REQUIRED）
+就是提交时如果其中一项不符合要求，全部撤回（事务回滚），提交过程中全部符合要求才会提交成功。
+@Transactional（Propagation=Propagation.REQUIRED_NEW）这个表示提交事务时，只要达到符合要求的项都能提交成功，直到不符合要求的就不提交了。
+@Transactional（readOnly=true）用于只读取数据库而不更新数据库时，可以帮助数据库引擎优化事务,默认是false。
+@Transactional（timeout=6）表示事务提交的可等待时间6秒以内提交成功，若某个链接超过6秒，这个事务就会回滚，提交失败。
+

@@ -1,2 +1,2 @@
 # JAVAweb
-just copy fromsomething about JAVAweb
+just writing something note about JAVAweb

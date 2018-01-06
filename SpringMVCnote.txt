@@ -1,3 +1,12 @@
+#Spring的组件及其作用#
+
+前端控制器(DispatcherServlet)：接收请求，响应结果，相当于转发器，中央处理器。减少了其他组件之间的耦合度
+处理器映射器(HandlerMapping)：根据请求的url查找Handler
+Handler处理器：按照HandlerAdapter的要求编写
+处理器适配器(HandlerAdapter)：按照特定规则(HandlerAdapter要求的规则)执行Handler。
+视图解析器(ViewResolver)：进行视图解析，根据逻辑视图解析成真正的视图(View)
+视图(View)：View是一个接口实现类试吃不同的View类型（jsp,pdf等等）
+
 @controller关注请求分发，@service关注业务逻辑,其中@controller对应的是mvc模式中的c，即控制层，@service是处于m，即业务层,
 @Component泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注,@Repository用于标注数据访问组件，即DAO组件。
 RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。

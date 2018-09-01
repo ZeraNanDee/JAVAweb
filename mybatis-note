@@ -1,0 +1,23 @@
+MyBatis中在查询进行select映射的时候，返回类型可以用resultType，也可以用resultMap，resultType是直接表示返回类型的,
+而resultMap则是对外部ResultMap的引用，但是resultType跟resultMap不能同时存在。
+
+parameterType在接口Mapper里方法名属性为void，作为输入类型对数据库进行增删改查。
+resultType或resultMap在接口Mapper里方法名属性为类名，作为输出类型返回数据库的查询条件。
+
+parameterType有基本数据类型和复杂的数据类型配置。
+1.基本数据类型，如输入参数只有一个，其数据类型可以是基本的数据类型，也可以是
+自己定的类类型。包括int,String,Integer,Date,如下：
+
+（1）根据id进行相应的删除：<delete id="deleteById" parameterType="Integer">
+
+（2）添加员工：<insert id="addEmp" parameterType="com.pojo.Employee">
+
+2.复杂数据类型：包含java实体类，map。
+
+配置如：
+
+  <select id="selectTeacher" parameterType="Map" resultType="com.myapp.domain.Teacher">  
+
+       select * from Teacher where c_id=#{id} and sex=#{sex} 
+
+  </select>  

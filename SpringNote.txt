@@ -6,6 +6,11 @@ Class c=Class.forName（“类的路径”）
 Object action=c.newInstance（）;//加载类，调用无参默认的构造函数
 c.getMethod（）/C.getField（）....可以获取对象c的方法/构造函数，获取某个对象的属性等（包括私有）
 
+Spring IOC是面向接口编程，低耦合度的MVC设计模式，从底层构造程序，通过DI注入（XML的bean实例，注解，setter注入）
+Spring AOP用于事务管理。
+@Aspect(切面): 通常是一个类，里面可以定义切入点和通知JointPoint(连接点):  程序执行过程中明确的点，一般是方法的调用Advice(通知):  AOP在特定的切入点上执行的增强处理:@Before:  标识一个前置增强方法，相当于BeforeAdvice的功能@After: final增强，不管是抛出异常或者正常退出都会执行
+@AfterReturning:  后置增强，似于AfterReturningAdvice, 方法正常退出时执行@AfterThrowing:  异常抛出增强，相当于ThrowsAdvice@Around: 环绕增强
+
 private static ApplicationContext applicationContext;这个类是Spring IOC容器的使用
     ApplicationContext（上下文管理）是由BeanFactory（工厂类管理）派生而来，是其子类，多了一些方法，例如：
 	1.ApplicationContext有多了监控和事件机制，ContextRefreshedEvent：bean全部类加载完，
@@ -32,6 +37,15 @@ Bean工厂有静态的，Bean工厂的管理机制就是用bean管理bean，最�
 JVM：1.加载.class文件 2.管理并分配内存 3.执行垃圾收集 JRE包含JVM的运行环境，是JAVA程序运行的容器，同时也是操作系统的
 一个进程，JVM在整个JDK中处于最底层，负责于操作的交互，用来屏蔽操作系统环境，提供独特的运行环境，JVM通过JDK的java.exe完成，
 JVM就是JAVA可以运用于多平台的一个重要原因。
+
+JVM的类加载器->内存区域（方法区，虚拟机栈，堆，程序计数器，本地方法栈（调用本地库接口，和C语言有关，名为JNI）->垃圾处理器
+堆一般存放实例，实例化的对象存在堆中，元空间（永久区）一般放JDK自身class，interface元数据，不会被垃圾处理器回收。
+类文件和方法存在虚拟机栈中，栈执行方法都是先进后出，如果进入无线递归方法，则会不停入栈，导致虚拟机栈溢出，java.lang.StackOverflowError
+栈管运行，堆管储存。
+而方法去存放静态变量，常量，类信息，JAVA共用类等。（此区域属于共享区域）
+JVM关闭时释放虚拟机内存。
+-Xmx1024m -Xms1024m -xx：+PrintGCDetails 通过改变堆内存大小，优化JVM虚拟机，默认JVM内存堆内存为电脑内存的1/4。
+垃圾处理：最合适的算法-分代收集算法（年轻代，老年代，Eden）
 
 Spring配置文件的整合，如果导入多个XML文件，可以再另外做一个XML作为这些XML的整合，在主方法中只需要调用整合的XML即可
 

@@ -174,3 +174,13 @@ Spring事务的注解时，关键字是@Transactional,默认值@Transactional（
 @Transactional（readOnly=true）用于只读取数据库而不更新数据库时，可以帮助数据库引擎优化事务,默认是false。
 @Transactional（timeout=6）表示事务提交的可等待时间6秒以内提交成功，若某个链接超过6秒，这个事务就会回滚，提交失败。
 
+在并发编程中很容易出现并发安全的问题，
+有一个很简单的例子就是多线程更新变量i=1,比如多个线程执行i++操作，
+就有可能获取不到正确的值。在JAVA JUC下的atomic包工具类
+可以解决这类数据原子性问题：1. 既有内存可见性volatile ，2. CAS 算法（内存值，预估值，更新值）
+private static AtomicInteger atomicInteger = new AtomicInteger();
+
+当许多线程访问collection时，ConcurrentHashMap通常优于同步的HashMap，
+ConcurrentSkipListMap通常优于同步的TreeMap，当期望的读数和遍历远远大于列表
+的更新数据时，CopyOnWriteArrayList优于同步的ArrayList。
+

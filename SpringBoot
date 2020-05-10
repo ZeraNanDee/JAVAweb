@@ -1,3 +1,5 @@
 application.yaml比起application.properties的优势在于，可以直接绑定pojo层的属性和值，方便设置全局环境。
 在Company类中注入 @ConfigurationProperties(prefix = "company") ，根据对应的属性值，在application.yaml中绑定赋值即可。
 JRS303验证是后台验证，前端验证可能被绕过执行，因为前后端都需要签证。
+根据不同的开发环境，配置文件也可能不同，例如application.properties和application-test.properties。在默认的application.properties当中，
+加上Spring.profiles.active=test，这样就更改成了application-test.properties文件。

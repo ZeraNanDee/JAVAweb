@@ -1,2 +1,3 @@
 application.yaml比起application.properties的优势在于，可以直接绑定pojo层的属性和值，方便设置全局环境。
-在Company类中注入 @ConfigurationProperties(prefix = "company") ，根据对应的属性值，在application.yaml中赋值即可。
+在Company类中注入 @ConfigurationProperties(prefix = "company") ，根据对应的属性值，在application.yaml中绑定赋值即可。
+

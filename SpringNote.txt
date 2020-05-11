@@ -155,7 +155,7 @@ Spring AOP 切面：跨越应用程序的多个模块的功能，将纯净代码
 	   
 	   
 	   isAssignableFrom 是用来判断一个类Class1和另一个类Class2是否相同或是另一个类的超类或接口
-	   而  instanceof  是用来判断一个对象实例是否是一个类或接口的或其子类子接口的实例。   
+	   而  instanceof  是用来判断一个对象是否是一个类的实例。   
 所有的类都是Class类的实例，Object是类，那么Object也是Class类的一个实例。
 所有的类都最终继承自Object类，Class是类，那么Class也继承自Object。
          System.out.println(Class.class instanceof Object);
@@ -179,6 +179,9 @@ Spring事务的注解时，关键字是@Transactional,默认值@Transactional（
 就有可能获取不到正确的值。在JAVA JUC下的atomic包工具类
 可以解决这类数据原子性问题：1. 既有内存可见性volatile ，2. CAS 算法（内存值，预估值，更新值）
 private static AtomicInteger atomicInteger = new AtomicInteger();
+
+volatile关键字的作用很简单，就是一个线程在对主内存的某一份数据进行更改时，改完之后会立刻刷新到主内存。
+并且会强制让缓存了该变量的线程中的数据清空，必须从主内存重新读取最新数据。
 
 当许多线程访问collection时，ConcurrentHashMap通常优于同步的HashMap，
 ConcurrentSkipListMap通常优于同步的TreeMap，当期望的读数和遍历远远大于列表

@@ -25,3 +25,5 @@ application.properties中配置 debug = true 可以查看已经自动装配好�
 
 静态资源装配：WebMvcAutoConfiguration和WebMvcProperties 指定了路径 WEB/INF/webjars/** 或者 /** , 静态资源如果在项目中的话，相同文件名
 优先级：resource目录 > static目录 > 其他路径  一般静态资源访问的目录：static resource public /** webjars
+
+如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面e79fa5e98193e4b893e5b19e31333363393730，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。

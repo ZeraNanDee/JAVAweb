@@ -1,3 +1,6 @@
+SpringBoot=Spring+SpringMVC: SpringMVC提供了servlet的IOC容器，就是依赖注入，通过管理各个bean来自动装配实例化。底层是相当于Map的键值对，
+Key-value，Key就是requestMapping注解的URL，而value就是注解下通过JAVA反射机制生成的类实例化bean（动态实例）。
+
 application.yaml比起application.properties的优势在于，可以直接绑定pojo层的属性和值，方便设置全局环境。
 在Company类中注入 @ConfigurationProperties(prefix = "company") ，根据对应的属性值，在application.yaml中绑定赋值即可。
 
@@ -26,6 +29,11 @@ application.properties中配置 debug = true 可以查看已经自动装配好�
 静态资源装配：WebMvcAutoConfiguration和WebMvcProperties 指定了路径 WEB/INF/webjars/** 或者 /** , 静态资源如果在项目中的话，相同文件名
 优先级：resource目录 > static目录 > 其他路径  一般静态资源访问的目录：static resource public /** webjars
 
+@Configuration是可以自定义MVC的类，可以实现WebMvcConfigurer类的一些常用的接口，同时还可以添加自定义的新类。
+
 如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面e79fa5e98193e4b893e5b19e31333363393730，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。
 
 pojo类中的注解：@Data @AllArgsConstructor @NoArgsConstructor 无需写setter getter 和构造函数。
+
+转发和重定向的区别：转发就是客户端对服务器进行一次请求（客户端向服务器发送请求，服务器有这个路径直接转发到这个路径给客户端）
+                  重定向就是客户端对服务器进行两次请求（客户端向服务器发送请求后，服务器只返回给这个请求的数据给客户端，客户端需要重新用此数据发送请求）

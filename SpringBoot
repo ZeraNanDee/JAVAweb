@@ -46,3 +46,12 @@ pojo类中的注解：@Data @AllArgsConstructor @NoArgsConstructor 无需写sett
 就会重新发送一次请求对数据进行修改，这也就是有的人在刷新一次页面就增加一条数据的原因。
 
 因为 spring boot 内置了servlet容器，所以没有web.xml，直接用XXXRegistrationBean实例化bean
+
+java8中的lambda表达式，方法需要相应的接口，
+例如 MathOperation addition = (int a, int b) -> a + b; 
+需要 interface MathOperation {
+      int operation(int a, int b);
+   }
+   
+springSecurity @EnableWebSecurity 继承WebSecurityConfigurerAdapter 通过授权和认证来设置拦截
+链式编程：从写configure(HttpSecurity http)方法用来授权  从写configure(AuthenticationManagerBuilder auth)用来认证

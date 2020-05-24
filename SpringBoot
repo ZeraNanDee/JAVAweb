@@ -61,3 +61,5 @@ springSecurity @EnableWebSecurity 继承WebSecurityConfigurerAdapter 通过授�
 // 前台收到的参数默认是username和password，参数名如果不同需要自定义，否则报错
 http.formLogin().loginPage("/toLogin").loginProcessingUrl("/login");
 
+@Bean 创建一个实例，并将返回这个实例。
+@Autowired 拿出一个该类的实例，如果没有实例化，就拿不到，@Service，@Component...这些一半都自带@Bean实例化。
